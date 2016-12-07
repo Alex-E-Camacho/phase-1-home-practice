@@ -32,11 +32,14 @@ end
 # '480014430', 'c', and '480--01--4430' would all be formatted '480-01-4430'.
 def format_ssns(string)
    ssn_array = grab_all_ssns(string)
-    binding.pry
-   ssn_array.each do |ssns|
-    ssns.split('').delete_if { |str| str =~ /\D/ }
-    ssns.join
-    ssns.insert(3 => "-", 6 => "-")
+   ssn_array.map do |ssns|
+    new_array = ssns.split('')
+    new_array.delete_if { |str| str =~ /\D/ }
+    new_array.insert(3, "-")
+    new_array.insert(6, "-")
+    new_array = new_array.join
+    # binding.pry
+    new_array
    end
 end
 
@@ -46,4 +49,4 @@ end
 
 # if /D, delete it
 
-format_ssns("The numbers are 480--01--4430, 234.60.1422,")
+p format_ssns("The numbers are 480--01--4430, 234.60.1422,")
