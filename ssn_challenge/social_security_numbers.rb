@@ -32,15 +32,16 @@ end
 # '480014430', 'c', and '480--01--4430' would all be formatted '480-01-4430'.
 def format_ssns(string)
    ssn_array = grab_all_ssns(string)
-   ssn_array.map do |ssns|
-    new_array = ssns.split('')
-    new_array.delete_if { |str| str =~ /\D/ }
-    new_array.insert(3, "-")
-    new_array.insert(6, "-")
-    new_array = new_array.join
-    # binding.pry
-    new_array
-   end
+     ssn_array.map do |ssns|
+      new_array = ssns.split('')
+      new_array.delete_if { |str| str =~ /\D/ }
+      new_array.insert(3, "-")
+      new_array.insert(6, "-")
+      new_array = new_array.join
+      ssn_array = new_array
+     end
+   ssn_array
+     # binding.pry
 end
 
   # /\d{9}/.match(string).to_A
