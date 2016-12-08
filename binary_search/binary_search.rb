@@ -4,6 +4,7 @@ def binary_search(obj, arr)
 mid = arr.length/2
 left = arr[0..arr[(mid-1)]]
 right = arr[(mid+1)..-1]
+left_compensate = left.length
  # binding.pry
   if obj == arr[mid]
      return mid
